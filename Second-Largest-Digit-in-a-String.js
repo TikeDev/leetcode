@@ -3,14 +3,14 @@
 3 * @return {number}
 4 */
 5var secondHighest = function(s) {
-6    let sArr = s.split("");
-7    let sNumArr = sArr.filter(char => +char == char);
-8    if (sNumArr.length < 1) return -1;
-9
-10    let sNumSetArr = Array.from(new Set(sNumArr));
-11    if (sNumSetArr.length < 2) return -1;
-12    return +(sNumSetArr.sort((a, b) => b-a)[1]);
-13
+6    let sSet = new Set();
+7    for (let c of s){
+8      if (+c == c) sSet.add(+c);
+9    }
+10
+11    if (sSet.size < 2) return -1;
+12
+13    return Array.from(sSet).sort((a, b) => b-a)[1];
 14};
 15
 16/*
